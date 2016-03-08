@@ -14,7 +14,15 @@ threadsafe: yes
 
 # Handlers define how to route requests to your application.
 handlers:
-
+- url: /js
+  static_dir: js
+  application_readable: true
+- url: /data
+  static_dir: data
+  application_readable: true
+- url: /templates
+  static_dir: templates
+  application_readable: true
 # App Engine serves and caches static files contained in the listed directories
 # (and subdirectories). Uncomment and set the directory as needed.
 #- url: /client
