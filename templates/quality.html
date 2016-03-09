@@ -17,8 +17,16 @@
 	</div>
 	<div class="ui container">
 		<h2>About the data quality</h2>
+
+		<h3>Overview</h3>
+		<p>The data set in general was of good quality. I would've liked more public datasets with respect policy etc in each of these states. Also, I would've liked more detail on the incident - if it was a homicide, suicide, accidental shooting, police shooting etc. Adding that element to the visualization would've spruced it up a bit.</p>
+
+		<h3>Data cleaning and processing for D3</h3>
+		<p>I had to write a clean_up.py script <a href="https://github.com/sacnayak/ssnayak-viz">(available on my github)</a> to filter out the data into a form that was good for visualizing in my calendar. While the data was raw and listed out each incident on different days, I had to summarize it with respect to count of incidents on each day.</p>
+
+		<h3>Datetime issues</h3>
+		<p>An annoying aspect I'm seeing in many datasets is the different datetime formats each dataset follows. Found a good <a href="https://labix.org/python-dateutil">library</a> to handle that.</p>
 	</div>
 	<script type="text/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
-	<script type="text/javascript" href="js/gundeathcalendar.js"></script>
 </body>
 </html>

@@ -12,32 +12,87 @@ body {
   shape-rendering: crispEdges;
 }
 
+
+p, ul, li {
+	font-size: 1.33em;
+}
+
 .day {
-  fill: #fff;
+  /*fill: #fff;*/
   stroke: #ccc;
 }
 
 .month {
   fill: none;
   stroke: #000;
-  stroke-width: 0.5px;
+  stroke-width: 1px;
 }
 
-.RdYlGn .q0-11{fill:rgb(165,0,38)}
-.RdYlGn .q1-11{fill:rgb(215,48,39)}
-.RdYlGn .q2-11{fill:rgb(244,109,67)}
-.RdYlGn .q3-11{fill:rgb(253,174,97)}
-.RdYlGn .q4-11{fill:rgb(254,224,139)}
-.RdYlGn .q5-11{fill:rgb(255,255,191)}
-.RdYlGn .q6-11{fill:rgb(217,239,139)}
-.RdYlGn .q7-11{fill:rgb(166,217,106)}
-.RdYlGn .q8-11{fill:rgb(102,189,99)}
-.RdYlGn .q9-11{fill:rgb(26,152,80)}
-.RdYlGn .q10-11{fill:rgb(0,104,55)}
+section.container {
+	padding:2em 0em 2em 0em;
+}
 
 </style>
 	</head>
 	<body>
+	<div class="ui menu inverted">
+		<div class="ui container">
+			<h4 class="header item"><a href="#">Home</a></h4>
+			<h4 class="header item"><a href="about">About</a></h4>
+			<h4 class="header item"><a href="quality">Quality</a></h4>	
+		</div>
+	</div>
+	<section class="container">
+		<div class="ui container">
+			<h2>Have things improved since Newtown shooting?</h2>
+			<p>I had recently stumbled across a crowd sourced twitter handle <a href="https://twitter.com/GunDeaths">@GunDeaths</a> that simply reported all the homicides via firearms. It was one of the many public initiatives undertaken to force the government into action with respect to the gun regulation policy. In this respect, I decided to visualize all the gun related violences in ways that really communicate how extreme the situation is currently.</p>
+
+			<p>Note: I could find only a 2013 dataset in time for this project. I would've liked to get a less dated dataset but later found one archive which you can use if interested at the <a href="http://www.gunviolencearchive.org/">Gun Violence Archive Project</a>. The current dataset is available from Slate. I stored it in a Fusion Table <a href="https://www.google.com/fusiontables/DataSource?docid=1R4VPwxsNq_XvNRj-v2eAP10FmLt8-QUNgUVgWWYt">here.</a></p>
+		</div>
+	</section>
+	<section class="container">
+		<div class="ui container">
+			<div class="ui relaxed divided items">
+				
+				
+				<h2>Overview of Gun Violence incidents in the country(2013)</h2><br/>
+				<iframe width="1000" height="600" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col8+from+1R4VPwxsNq_XvNRj-v2eAP10FmLt8-QUNgUVgWWYt&amp;viz=MAP&amp;h=false&amp;lat=32.57879282898915&amp;lng=-97.092314471875&amp;t=1&amp;z=6&amp;l=col8&amp;y=2&amp;tmplt=2&amp;hml=TWO_COL_LAT_LNG"></iframe>
+				<br/><br/>
+				<p>As seen, some take aways from this viz are:</p>
+				<ul class="ui list">
+					<li>The east and southern georgraphical regions in general have a huge problem with gun violence.</li>
+					<li>If we zoom in, we can see a lot of incidents more concentrated around urban centers.</li>
+					<li>If you zoom in further to Pittsburgh, Carnegie Mellon area is devoid of any such incidents (breathe!)</li>
+				</ul>
+				
+				<br/><br/>
+				<hr/>
+				<h2>Gun Violence by state and analysis</h2><br/>
+				<iframe width="1000" height="600" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas&amp;q=select+col7%2C+count()+from+1R4VPwxsNq_XvNRj-v2eAP10FmLt8-QUNgUVgWWYt+group+by+col7+order+by+count()+asc+limit+52&amp;viz=GVIZ&amp;t=COLUMN&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_vAxes=%5B%7B%22title%22%3Anull%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;gco_useFirstColumnAsDomain=true&amp;gco_isStacked=false&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22viewWindow%22%3Anull%2C+%22viewWindowMode%22%3Anull%2C+%22textStyle%22%3A%7B%22color%22%3A%22%23222%22%2C+%22fontSize%22%3A%227%22%7D%7D&amp;gco_legend=right&amp;gco_legendTextStyle=%7B%22color%22%3A%22%23222%22%2C+%22fontSize%22%3A%227%22%7D&amp;att=true&amp;width=1000&amp;height=585"></iframe>
+				<br/><br/>
+				<p>As seen, some take aways from this viz are:</p>
+				<ul class="ui list">
+					<li>I was surprised that California has the most number of gun related violence, considering it is one of the states that has the strictest laws. On further analysis, most of them were due to <strong>homicide or suicide</strong>. Having said that I'd like to investigate further.</li>
+					<li>Both Florida and Texas have mediocre policy restrictions on Gun Control. Could be a factor in the unusual statistic.</li>
+				</ul>
+				<br/><br/>
+				<hr/>
+				<h2>Primary Age groups affected</h2><br/>
+				<iframe width="500" height="300" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?containerId=googft-gviz-canvas&amp;q=select+col0%2C+col4+from+1R4VPwxsNq_XvNRj-v2eAP10FmLt8-QUNgUVgWWYt+order+by+col0+asc&amp;viz=GVIZ&amp;t=SCATTER&amp;rmax=250&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_useFirstColumnAsDomain=true&amp;gco_lineWidth=0&amp;gco_booleanRole=certainty&amp;gco_pointSize=7&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D&amp;gco_vAxes=%5B%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;gco_legend=right&amp;gco_trendlines=%7B%7D&amp;gco_series=%7B%220%22%3A%7B%22color%22%3A%22%23a61c00%22%7D%7D&amp;gco_tooltip=%7B%22isHtml%22%3Atrue%7D&amp;tmplt=4&amp;width=500&amp;height=300"></iframe>
+				<p>As seen, some take aways from this viz are:</p>
+				<ul class="ui list">
+					<li>The most affected age group is 13-25 age group. <strong>This can be controlled through policy.</strong></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<section class="container">
+		<div class="ui container">
+			<h2>The 2013 Gun Violence Calendar (D3)</h2>	
+			<p>2013 was a bloody calendar in terms of gun violence. <strong>11422 people were killed by guns that year. That makes it 31 people on an average PER DAY.</strong> There hasn't been a single day in the year of 2013 that did not see bloodshed via guns. Will this continue? (Hover over the cell to view the statistic for that day)</p>
+		</div>
+	</section>
+	</body>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<script type="text/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js"></script>
 	<script src="js/d3.min.js" charset="utf-8"></script>
@@ -46,13 +101,13 @@ body {
 
 var width = 960,
     height = 136,
+    month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
     cellSize = 17; // cell size
 
 var format = d3.time.format("%Y-%m-%d");
 
-var color = d3.scale.quantize()
+var color = d3.scale.linear().range(["white", '#B31B1B'])
     .domain([14, 66])
-    .range(d3.range(11).map(function(d) { return "q" + d + "-11"; }));
 
 /*Creating the SVG structure for the months*/
 var svg = d3.select("body").selectAll("svg")
@@ -83,7 +138,19 @@ var rect = svg.selectAll(".day")
 
 rect.append("title")
     .text(function(d) { return d; });
-//console.log(rect);
+
+var legend = svg.selectAll(".legend")
+      .data(month)
+    .enter().append("g")
+      .attr("class", "legend")
+      .attr("transform", function(d, i) { return "translate(" + (((i+1) * 70)+8) + ",0)"; });
+
+legend.append("text")
+   .attr("class", function(d,i){ return month[i] })
+   .style("text-anchor", "end")
+   .attr("dy", "-.25em")
+   .text(function(d,i){ return month[i] });
+
 svg.selectAll(".month")
     .data(function(d) { return d3.time.months(new Date(d, 0, 1), new Date(d + 1, 0, 1)); })
   .enter().append("path")
@@ -100,9 +167,9 @@ d3.csv("data/dict.csv", function(error, csv) {
 
 	/*Create rectangles*/
   rect.filter(function(d) { return d in data; })
-      .attr("class", function(d) { return "day " + color(data[d]); })
+      .attr("fill", function(d) { return color(data[d]); })
     .select("title")
-      .text(function(d) { return d + ": " + data[d]; });
+      .text(function(d) { return d + ": " + data[d] + " deaths on this day"; });
 });
 
 function monthPath(t0) {
