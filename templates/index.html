@@ -17,6 +17,11 @@ p, ul, li {
 	font-size: 1.33em;
 }
 
+rect.day:hover {
+	stroke: #000000;
+	stroke-width: 2px solid;
+}
+
 .day {
   /*fill: #fff;*/
   stroke: #ccc;
@@ -88,8 +93,30 @@ section.container {
 	</section>
 	<section class="container">
 		<div class="ui container">
-			<h2>The 2013 Gun Violence Calendar (D3)</h2>	
+			<h2>The Bloody Calendar (D3)</h2>	
 			<p>2013 was a bloody calendar in terms of gun violence. <strong>11422 people were killed by guns that year. That makes it 31 people on an average PER DAY.</strong> There hasn't been a single day in the year of 2013 that did not see bloodshed via guns. Will this continue? (Hover over the cell to view the statistic for that day)</p>
+
+			<h3><strong>Click on a cell to view the incidents of that day in the year</strong></h3>
+		</div>
+	</section>
+	<section class="container">
+		<div class="ui container">
+			<D3><!-- Visualization --></D3>
+			<h2>The Victims that day</h2>
+			<p>Key for AgeGroup</p>
+			<ul class="ui list">
+				<li><strong>1</strong> : Less than 13 years of age</li>
+				<li><strong>2</strong> : Between 13-18 years of age</li>
+				<li><strong>3</strong> : Above 13 years of age</li>
+			</ul>
+			<table id="data" class="ui compact striped table">
+				<thead>
+					<tr id="cols">
+					</tr>
+				</thead>
+				<tbody id="rows">
+				</tbody>
+			</table>
 		</div>
 	</section>
 	</body>
@@ -110,7 +137,7 @@ var color = d3.scale.linear().range(["white", '#B31B1B'])
     .domain([14, 66])
 
 /*Creating the SVG structure for the months*/
-var svg = d3.select("body").selectAll("svg")
+var svg = d3.select("D3").selectAll("svg")
     .data(d3.range(2013, 2014))
   .enter().append("svg")
     .attr("width", width)
@@ -170,6 +197,51 @@ d3.csv("data/dict.csv", function(error, csv) {
       .attr("fill", function(d) { return color(data[d]); })
     .select("title")
       .text(function(d) { return d + ": " + data[d] + " deaths on this day"; });
+
+      rect.on("click", function(d){ 
+      	console.log("In here!: " + d) 
+
+      	//ajax query
+			$.ajax({
+				url: '/_update_table',
+				dataType: 'json',
+				contentType: 'application/json',
+				data: JSON.stringify({'date' : d}),
+				type: 'POST',
+				success: function (res, status) {
+					console.log("successrunning");
+			 		// On Success
+			 		// On Success
+			 		var cols = res["headers"];
+			 		var rows = res["content"];
+	               // get the table, columns and rows
+	               table = document.getElementById("data");
+	               headers = document.getElementById("cols");
+	               body = document.getElementById("rows");
+
+	               // delete current contents
+	               headers.innerHTML='';
+	               body.innerHTML = '';
+
+	               for (col in cols) {
+	               	cell = document.createElement("th");
+	               	cell.innerHTML = cols[col];
+	               	headers.appendChild(cell);
+	               }
+
+	               for (row in rows) {
+	               	tr = document.createElement("tr");
+	               	for (item in rows[row]) {
+	               		td = document.createElement("td");
+	               		td.innerHTML = rows[row][item];
+	               		tr.appendChild(td);
+	               	}
+	               	body.appendChild(tr);
+	               }
+	           }
+   		});
+
+  	});
 });
 
 function monthPath(t0) {
